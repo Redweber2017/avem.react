@@ -1,0 +1,172 @@
+/* Fullscreen background with gradient */
+/* Reset all margins and padding */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Make body and html full height */
+html, body {
+  height: 100%;
+  width: 100%;
+  overflow: hidden; /* prevent any scroll that causes gaps */
+}
+
+.login-container {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(to bottom right, #0f2027, #203a43, #2c5364);
+  position: relative;
+  overflow: hidden;
+}
+
+
+/* SVG wave */
+.background-wave {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  z-index: 0;
+}
+
+/* Login box styling */
+.login-box {
+  background-color: rgba(255, 255, 255, 0.96);
+  padding: 40px 30px;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+  z-index: 1;
+  margin: 0 auto;
+}
+
+
+h2 {
+  font-size: 26px;
+  color: #222;
+  margin-bottom: 25px;
+}
+
+/* Input containers */
+.input-container {
+  margin-bottom: 25px;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-container input {
+  flex: 1;
+  padding: 12px 40px 12px 12px;
+  border: none;
+  border-bottom: 2px solid #ccc;
+  background-color: transparent;
+  font-size: 16px;
+  outline: none;
+  transition: border-color 0.3s ease;
+  color: #333;
+  width: 100%;
+}
+
+.input-container input:focus {
+  border-color: #1abc9c;
+}
+
+/* Eye icon for password toggle */
+.eye-icon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #555;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+/* Login button */
+button {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  background-color: #1abc9c;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background 0.3s ease-in-out;
+}
+
+button:hover {
+  background-color: #16a085;
+}
+
+/* Error message cleanly placed */
+.error {
+  color: red;
+  font-size: 14px;
+  margin-top: 14px;
+}
+
+/* Spinner */
+.loading-spinner {
+  margin: 10px auto;
+  width: 25px;
+  height: 25px;
+  border: 3px solid rgba(26, 188, 156, 0.3);
+  border-top: 3px solid #1abc9c;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  .login-box {
+    padding: 30px 20px;
+  }
+
+  h2 {
+    font-size: 22px;
+  }
+
+  .input-container input {
+    font-size: 14px;
+  }
+
+  button {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .login-box {
+    padding: 25px 15px;
+    max-width: 95%;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+
+  .input-container input {
+    font-size: 13px;
+  }
+
+  button {
+    font-size: 14px;
+  }
+}
