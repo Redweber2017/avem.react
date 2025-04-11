@@ -1,198 +1,179 @@
-/* More.css */
+/* Base styles */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(to bottom right, #0f2027, #203a43, #2c5364);
+  color: #f0f0f0;
+  min-height: 100vh;
+}
 
+/* Animation keyframes */
+@keyframes fadeSlideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Main container */
 .kit-details {
-    padding: 1rem;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    margin: 1rem auto;
-    font-family: Arial, sans-serif;
-    overflow-x: hidden;
-    
-  }
-  
-  /* Title styling */
-  .kit-details h2 {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-    color: #333;
-    text-align: center;
-  }
-  
-  /* Table container for responsiveness */
-  .table-container {
-    overflow-x: auto;
-    margin: 1rem 0;
-    -webkit-overflow-scrolling: touch;
-  }
-  
-  /* Table styling */
-  .kit-table {
-    width: 100%;
-    min-width: 600px;
-    border-collapse: collapse;
-    background-color: #fff;
-  }
-  
-  .kit-table th,
-  .kit-table td {
-    padding: 0.75rem;
-    text-align: center;
-    border: 1px solid #ddd;
-  }
-  
-  .kit-table th {
-    background-color: #007bff;
-    color: white;
-    font-weight: bold;
-  }
-  
-  .kit-table tr:nth-child(odd) {
-    background-color: #f2f2f2;
-  }
-  
-  /* Camera footage section */
-  .camera-footage {
-    display: flex;
-    gap: 0.5rem;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-  
-  /* Play button styling */
-  .play-btn {
-    background-color: #28a745;
-    color: white;
-    border: none;
-    padding: 0.5rem 1rem;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: background 0.3s ease;
-    min-width: 80px;
-  }
-  
-  .play-btn:hover {
-    background-color: #218838;
-  }
-  
-  .play-btn:disabled {
-    background-color: #6c757d;
-    cursor: not-allowed;
-  }
-  
-  /* Medium screens (tablets, 768px and below) */
-  @media (max-width: 768px) {
-    .kit-details {
-      padding: 0.75rem;
-     
-    }
-  
-    .kit-details h2 {
-      font-size: 1.3rem;
-    }
-  
-    .kit-table th,
-    .kit-table td {
-      padding: 0.6rem;
-      font-size: 0.9rem;
-    }
-  
-    .play-btn {
-      padding: 0.4rem 0.8rem;
-      font-size: 0.9rem;
-    }
-  }
-  
-  /* Small screens (mobile, 576px and below) */
-  @media (max-width: 576px) {
-    .kit-details {
-      padding: 0.5rem;
-    }
-  
-    .kit-details h2 {
-      font-size: 1.2rem;
-    }
-  
-    .kit-table {
-      min-width: 100%;
-      display: block;
-      overflow-x: auto;
-    }
-  
-    .kit-table th,
-    .kit-table td {
-      padding: 0.5rem;
-      font-size: 0.8rem;
-    }
-  
-    .play-btn {
-      width: 90px;
-      padding: 0.4rem 0.7rem;
-      font-size: 0.8rem;
-    }
-  }
-  
-  /* Extra small screens (400px and below) */
-  @media (max-width: 400px) {
-    .kit-details h2 {
-      font-size: 1rem;
-    }
-  
-    .kit-table th,
-    .kit-table td {
-      font-size: 0.75rem;
-      padding: 0.4rem;
-    }
-  
-    .play-btn {
-      width: 100%;
-      padding: 0.5rem;
-      font-size: 0.75rem;
-    }
-  
-    .camera-footage {
-      flex-direction: column;
-      width: 100%;
-    }
-  }
-  
-  /* Centered Loading Screen */
+  padding: 2rem 1rem;
+  text-align: center;
+}
+
+/* Heading animation */
+.kit-details h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  color: #ffffff;
+  opacity: 0;
+  animation: fadeSlideIn 0.8s ease-out forwards;
+  animation-delay: 0.2s;
+}
+
+/* Card container */
+.card-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}
+
+/* Each card */
+.data-card {
+  background-color: rgba(255, 255, 255, 0.95);
+  color: #222;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+  padding: 1rem;
+  width: 300px;
+  text-align: left;
+  transition: transform 0.3s ease;
+  opacity: 0;
+  animation: fadeUp 0.6s ease-out forwards;
+}
+
+.data-card:hover {
+  transform: translateY(-5px);
+}
+
+.data-card p {
+  margin: 0.4rem 0;
+  font-size: 0.95rem;
+  color: #333;
+}
+
+/* Camera footage buttons */
+.camera-footage {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.6rem;
+}
+
+.play-btn {
+  background-color: #1abc9c;
+  color: white;
+  border: none;
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: background 0.3s ease-in-out;
+}
+
+.play-btn:hover {
+  background-color: #16a085;
+}
+
+.play-btn:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.no-footage {
+  font-style: italic;
+  color: #555;
+  font-size: 0.9rem;
+}
+
+/* Loading screen */
 .loading-screen {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #f4f4f4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 2rem;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.spinner {
+  border: 4px solid rgba(255, 255, 255, 0.3);
+  border-top: 4px solid #1abc9c;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+  margin-bottom: 1rem;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loading-text {
+  font-size: 1.2rem;
+  color: #ffffff;
+}
+
+/* Stagger animation for cards */
+.card-list .data-card:nth-child(1) { animation-delay: 0.3s; }
+.card-list .data-card:nth-child(2) { animation-delay: 0.5s; }
+.card-list .data-card:nth-child(3) { animation-delay: 0.7s; }
+.card-list .data-card:nth-child(4) { animation-delay: 0.9s; }
+.card-list .data-card:nth-child(5) { animation-delay: 1.1s; }
+/* Add more if needed */
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .kit-details {
+    padding: 1.5rem 0.5rem;
+  }
+
+  .kit-details h2 {
+    font-size: 1.4rem;
+  }
+
+  .card-list {
     flex-direction: column;
-    font-family: Arial, sans-serif;
+    align-items: center;
   }
-  
-  /* Rotating Spinner */
-  .spinner {
-    width: 50px;
-    height: 50px;
-    border: 5px solid rgba(0, 123, 255, 0.3);
-    border-top-color: #007bff;
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
-    margin-bottom: 1rem;
+
+  .data-card {
+    width: 90%;
   }
-  
-  @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-  }
-  
-  /* Fading Loading Text */
+
   .loading-text {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #333;
-    animation: fadeIn 1.5s infinite alternate;
+    font-size: 1rem;
   }
-  
-  @keyframes fadeIn {
-    from { opacity: 0.5; }
-    to { opacity: 1; }
-  }
-  
+}

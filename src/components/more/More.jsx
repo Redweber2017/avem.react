@@ -8,20 +8,13 @@ const More = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch(`https://avemfinalbackend.onrender.com/kits/AO001K3JD`)
+    fetch(`https://avemfinalbackend.onrender.com/kits/${serial}`)
       .then((response) => response.json())
-      .then((data) => {
-        setKitData(data);
-      })
-      .catch((error) => {
-        setError(error.message);
-      });
+      .then((data) => setKitData(data))
+      .catch((error) => setError(error.message));
   }, [serial]);
 
-  if (error) {
-    return <div>Error: {error}</div>;
-  }
-
+  if (error) return <div>Error: {error}</div>;
   if (!kitData) {
     return (
       <div className="loading-screen">
@@ -34,49 +27,32 @@ const More = () => {
   return (
     <div className="kit-details">
       <h2>Kit Data for Serial Number: {kitData.serialNumber}</h2>
-      <div className="table-container">
-      <table className="kit-table">
-        <thead>
-          <tr>
-            <th>Location</th>
-            <th>Temperature</th>
-            <th>Time</th>
-            <th>Gas Leakage Status</th>
-            <th>Crash Status</th>
-            <th>Camera Footage</th>
-          </tr>
-        </thead>
-        <tbody>
-          {kitData.kitData.map((data, index) => (
-            <tr key={index}>
-              <td>{data.location}</td>
-              <td>{data.temperature}</td>
-              <td>{data.timestamp}</td>
-              <td>{data.gasLeakageStatus}</td>
-              <td>{data.crashStatus}</td>
-              <td>
-                <div className="camera-footage">
-                  {Array.isArray(data.cameraFootage) && data.cameraFootage.length > 0 ? (
-                    data.cameraFootage.map((footage, i) => (
-                      <div key={i} className="video-container">
-                        <button
-                          className="play-btn"
-                          onClick={() => window.open(footage, '_blank')}
-                          disabled={!footage || footage.trim() === ""} 
-                        >
-                          Play
-                        </button>
-                      </div>
-                    ))
-                  ) : (
-                    <p>No footage available</p>
-                  )}
-                </div>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      <div className="card-list">
+        {kitData.kitData.map((data, index) => (
+          <div key={index} className="data-card">
+            <p><strong>Location:</strong> {data.location}</p>
+            <p><strong>Temperature:</strong> {data.temperature}</p>
+            <p><strong>Time:</strong> {data.timestamp}</p>
+            <p><strong>Gas Leakage Status:</strong> {data.gasLeakageStatus}</p>
+            <p><strong>Crash Status:</strong> {data.crashStatus}</p>
+            <div className="camera-footage">
+              {Array.isArray(data.cameraFootage) && data.cameraFootage.length > 0 ? (
+                data.cameraFootage.map((footage, i) => (
+                  <button
+                    key={i}
+                    className="play-btn"
+                    onClick={() => window.open(footage, '_blank')}
+                    disabled={!footage || footage.trim() === ""}
+                  >
+                    Play
+                  </button>
+                ))
+              ) : (
+                <p className="no-footage">No footage available</p>
+              )}
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   );
