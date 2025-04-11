@@ -1,12 +1,5 @@
 /* Base styles */
-body {
-  margin: 0;
-  padding: 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: linear-gradient(to bottom right, #0f2027, #203a43, #2c5364);
-  color: #f0f0f0;
-  min-height: 100vh;
-}
+
 
 /* Animation keyframes */
 @keyframes fadeSlideIn {
@@ -35,7 +28,11 @@ body {
 .kit-details {
   padding: 2rem 1rem;
   text-align: center;
+  background: linear-gradient(to bottom right, #0f2027, #203a43, #2c5364); /* moved here */
+  min-height: 100vh;
+  color: #f0f0f0;
 }
+
 
 /* Heading animation */
 .kit-details h2 {
@@ -143,7 +140,7 @@ body {
 
 .loading-text {
   font-size: 1.2rem;
-  color: #ffffff;
+  color: #000000;
 }
 
 /* Stagger animation for cards */
@@ -175,5 +172,6 @@ body {
 
   .loading-text {
     font-size: 1rem;
+    color: #0f2027;
   }
 }
