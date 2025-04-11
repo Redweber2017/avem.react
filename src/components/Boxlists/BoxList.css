@@ -1,5 +1,4 @@
-
-/* Full-page gradient background fix */
+/* === GLOBAL STYLES === */
 html, body {
   margin: 0;
   padding: 0;
@@ -7,43 +6,47 @@ html, body {
   background: linear-gradient(to bottom right, #0f2027, #203a43, #2c5364);
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   color: #f0f0f0;
-}
-/* Global Body Style */
-body {
-  margin: 0;
-  padding: 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  min-height: 100vh;
+  box-sizing: border-box;
 }
 
-/* Centering the content */
+/* === BOX LIST CONTAINER === */
 .box-list-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
-  margin: auto;
   padding: 2rem 1rem;
-  
   color: #f0f0f0;
+  box-sizing: border-box;
 }
 
-/* Title styling */
-.box-list-title {
-  font-size: 18px;
-  color: #ffffff;
-  margin-bottom: 20px;
-  text-align: center;
-}
-
+/* === HEADINGS SECTION (Live, Active, Time) === */
 .box {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  flex-wrap: nowrap;
   width: 100%;
-  flex-wrap: wrap;
+  max-width: 1000px;
+  padding: 0 1rem;
+  margin-bottom: 20px;
+  gap: 10px;
+  overflow-x: auto;
 }
 
-/* Table styling */
+.box h2 {
+  font-size: 1.1rem;
+  margin: 0;
+  color: #f0f0f0;
+  white-space: nowrap;
+}
+
+/* Hide scrollbar if scrolling needed */
+.box::-webkit-scrollbar {
+  display: none;
+}
+
+/* === TABLE STYLES === */
 .serial-table {
   width: 100%;
   border-collapse: collapse;
@@ -70,7 +73,7 @@ body {
   background-color: #f2f2f2;
 }
 
-/* More button styling */
+/* === MORE BUTTON === */
 .more-btn {
   background-color: #4CAF50;
   color: white;
@@ -91,16 +94,20 @@ body {
   background-color: black;
 }
 
-/* Responsive Design */
+/* === RESPONSIVE BREAKPOINTS === */
 @media (max-width: 768px) {
   .box-list-container {
-    padding: 10px;
+    padding: 1rem;
   }
 
   .box {
-    align-items: center;
-    flex-direction: column;
-    gap: 1rem;
+    justify-content: space-around;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+  }
+
+  .box h2 {
+    font-size: 1rem;
   }
 
   .serial-table th, .serial-table td {
@@ -115,6 +122,15 @@ body {
 }
 
 @media (max-width: 576px) {
+  .box {
+    justify-content: flex-start;
+    gap: 16px;
+  }
+
+  .box h2 {
+    font-size: 0.95rem;
+  }
+
   .box-list-title {
     font-size: 16px;
   }
@@ -136,7 +152,7 @@ body {
   }
 }
 
-/* ✅ ORIGINAL Loading Screen (White background with blue spinner) */
+/* === ORIGINAL LOADING SCREEN === */
 .loading-screen {
   display: flex;
   justify-content: center;
