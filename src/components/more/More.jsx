@@ -7,11 +7,18 @@ const More = () => {
   const [kitData, setKitData] = useState(null);
   const [error, setError] = useState(null);
 
-  useEffect(() => {
+  const fetchKitData = () => {
     fetch(`https://avemfinalbackend.onrender.com/kits/${serial}`)
       .then((response) => response.json())
       .then((data) => setKitData(data))
       .catch((error) => setError(error.message));
+  };
+
+  useEffect(() => {
+    fetchKitData(); // Initial fetch
+    const interval = setInterval(fetchKitData, 5000); // Fetch every 5 seconds
+
+    return () => clearInterval(interval); // Cleanup interval on unmount
   }, [serial]);
 
   if (error) return <div>Error: {error}</div>;
@@ -28,7 +35,8 @@ const More = () => {
     <div className="kit-details">
       <h2>Kit Data for Serial Number: {kitData.serialNumber}</h2>
       <div className="card-list">
-        {kitData.kitData.map((data, index) => (
+        {/* Show latest data first (stack behavior) */}
+        {[...kitData.kitData].reverse().map((data, index) => (
           <div key={index} className="data-card">
             <p><strong>Location:</strong> {data.location}</p>
             <p><strong>Temperature:</strong> {data.temperature}</p>
