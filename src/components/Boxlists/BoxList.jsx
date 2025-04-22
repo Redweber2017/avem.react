@@ -86,7 +86,7 @@ const BoxList = () => {
           {boxDetails.map((box, index) => (
             <tr key={index}>
               <td>{box.serialNumber}</td>
-              <td>{box.status}</td>
+              <td>[ null ]</td>
               <td>
                 <button className="more-btn" onClick={() => handleMoreClick(box.serialNumber)}>
                   <span className="eye"><FaEye /></span>

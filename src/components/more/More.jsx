@@ -43,6 +43,7 @@ const More = () => {
             <p><strong>Time:</strong> {data.timestamp}</p>
             <p><strong>Gas Leakage Status:</strong> {data.gasLeakageStatus}</p>
             <p><strong>Crash Status:</strong> {data.crashStatus}</p>
+            <p>camera : </p>
             <div className="camera-footage">
               {Array.isArray(data.cameraFootage) && data.cameraFootage.length > 0 ? (
                 data.cameraFootage.map((footage, i) => (
